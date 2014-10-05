@@ -60,17 +60,16 @@ def UrlCheck(url):
             return False
         elif 'still available' in html:
             return True
+    except Exception as e:
+        raise(e)
 
-    except Exception:
-        raise('website has changed words.')
-
-def combination():
+def Combination():
     for s in itertools.product('abcdefghijklmnopqrstuvwxyz', repeat=4):
         
         combination = ''.join(s)
         final = combination + '.com'
         
-        if checkUrl(final):
+        if UrlCheck(final):
             write_to_file(final, True)
             print(final, True)
         else:
